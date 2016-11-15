@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :blogs, except: [:new, :edit]
   resources :profiles, except: [:new, :edit]
   resources :contacts, except: [:new, :edit]
   resources :examples, except: [:new, :edit]
