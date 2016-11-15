@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115191628) do
+ActiveRecord::Schema.define(version: 20161115193240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,23 @@ ActiveRecord::Schema.define(version: 20161115191628) do
 
   add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
 
+  create_table "profiles", force: :cascade do |t|
+    t.text     "first_name"
+    t.text     "last_name"
+    t.date     "birthday"
+    t.text     "about_me"
+    t.text     "extra1"
+    t.text     "extra2"
+    t.text     "extra3"
+    t.text     "extra4"
+    t.text     "extra5"
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
     t.string   "token",           null: false
@@ -50,4 +67,5 @@ ActiveRecord::Schema.define(version: 20161115191628) do
 
   add_foreign_key "contacts", "users"
   add_foreign_key "examples", "users"
+  add_foreign_key "profiles", "users"
 end
