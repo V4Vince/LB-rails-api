@@ -11,9 +11,9 @@ class ProfilesController < OpenReadController
 
   # GET /profiles/1
   # GET /profiles/1.json
-  # def show
-  #   render json: @profile
-  # end
+  def show
+    render json: @profile
+  end
 
   # POST /profiles
   # POST /profiles.json

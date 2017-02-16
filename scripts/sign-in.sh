@@ -5,6 +5,6 @@ curl --include --request POST http://localhost:4741/sign-in \
   --data '{
     "credentials": {
       "email": "an@example.email",
-      "password": "an example password"
+      "password": "qqqq"
     }
   }'
