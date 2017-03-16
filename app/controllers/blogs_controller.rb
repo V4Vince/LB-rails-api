@@ -56,6 +56,6 @@ class BlogsController < OpenReadController
     def blog_params
       # Add like buttons
       # Add extra content fields for links
-      params.require(:blog).permit(:title, :content)
+      params.require(:blog).permit(:title, :content, :created_at)
     end
 end
