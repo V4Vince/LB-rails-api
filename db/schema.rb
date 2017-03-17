@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115202603) do
+ActiveRecord::Schema.define(version: 20170317170928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,9 +58,14 @@ ActiveRecord::Schema.define(version: 20161115202603) do
     t.text     "extra3"
     t.text     "extra4"
     t.text     "extra5"
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",            null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "avatar"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -76,8 +81,22 @@ ActiveRecord::Schema.define(version: 20161115202603) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
 
+  create_table "videos", force: :cascade do |t|
+    t.text     "title",       null: false
+    t.text     "video_link"
+    t.text     "description", null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "videos", ["title"], name: "index_videos_on_title", unique: true, using: :btree
+  add_index "videos", ["user_id"], name: "index_videos_on_user_id", using: :btree
+  add_index "videos", ["video_link"], name: "index_videos_on_video_link", unique: true, using: :btree
+
   add_foreign_key "blogs", "users"
   add_foreign_key "contacts", "users"
   add_foreign_key "examples", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "videos", "users"
 end
