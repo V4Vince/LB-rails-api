@@ -1,4 +1,4 @@
-class VideosController < ApplicationController
+class VideosController < OpenReadController
   before_action :set_video, only: [:show, :update, :destroy]
 
   # GET /videos
